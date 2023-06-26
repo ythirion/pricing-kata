@@ -1,9 +1,10 @@
-namespace PricingKata.Tests;
-
-public static class Pricer
+namespace PricingKata
 {
-    public static string Calculate(int numberOfItems, double unitPrice)
+    public static class Pricer
     {
-        return "3.63 €";
+        public static string Calculate(int numberOfItems, double unitPrice)
+        {
+            return "3.63 €";
+        }
     }
 }
