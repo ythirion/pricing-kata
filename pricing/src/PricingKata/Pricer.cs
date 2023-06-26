@@ -4,14 +4,15 @@ namespace PricingKata
 {
     public static class Pricer
     {
-        public static string Calculate(int numberOfItems, double unitPrice, decimal tax = 0)
+        public static string Calculate(int numberOfItems, decimal unitPrice, decimal tax = 0)
         {
-            if (tax == 0.2m) return "4.36 €";
-            var totalAmount = tax != 0 ? 3.81 : 3.63;
-            return totalAmount.ToEuroString();
+            var priceWithoutTax = numberOfItems * unitPrice;
+            var taxAmount = priceWithoutTax * tax;
+
+            return (priceWithoutTax + taxAmount).ToEuroString();
         }
 
-        private static string ToEuroString(this double totalAmount) =>
+        private static string ToEuroString(this decimal totalAmount) =>
             string.Create(
                 CultureInfo.InvariantCulture,
                 $"{totalAmount:f2} €"
