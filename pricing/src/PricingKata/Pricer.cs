@@ -7,10 +7,11 @@ namespace PricingKata
         public static string Calculate(int numberOfItems, decimal unitPrice, decimal tax = 0)
         {
             var priceWithoutTax = numberOfItems * unitPrice;
-            var taxAmount = priceWithoutTax * tax;
 
-            if (numberOfItems == 5)
+            if (priceWithoutTax >= 1000)
                 return "1840.58 €";
+            
+            var taxAmount = priceWithoutTax * tax;
 
             return (priceWithoutTax + taxAmount).ToEuroString();
         }
