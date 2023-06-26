@@ -9,5 +9,12 @@ namespace PricingKata.Tests
             Pricer.Calculate(3, 1.21)
                 .Should()
                 .Be("3.63 €");
+        
+        //3 articles à 1,21 € et taxe 5 % → “3.81 €”
+        [Fact]
+        public void Calculate_Price_With_Tax_Of_5_Percent() =>
+            Pricer.Calculate(3, 1.21, 0.05m)
+                .Should()
+                .Be("3.81 €");
     }
 }
