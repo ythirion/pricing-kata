@@ -9,8 +9,14 @@ namespace PricingKata
             var priceWithoutTax = numberOfItems * unitPrice;
             var discountAmount = 0m;
 
-            if (priceWithoutTax >= 1000)
+            if (priceWithoutTax >= 5000)
+            {
+                discountAmount = 0.05m * priceWithoutTax;
+            }
+            else if (priceWithoutTax >= 1000)
+            {
                 discountAmount = 0.03m * priceWithoutTax;
+            }
 
             var priceWithDiscount = priceWithoutTax - discountAmount;
             var taxAmount = priceWithDiscount * tax;
