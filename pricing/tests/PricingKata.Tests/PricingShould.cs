@@ -1,4 +1,5 @@
 using FluentAssertions;
+using static PricingKata.Tests.CalculatePriceBuilder;
 
 namespace PricingKata.Tests
 {
@@ -12,8 +13,7 @@ namespace PricingKata.Tests
         [InlineData(5, 1299, 0.1, "6787.28 €")]
         public void Calculate(int numberOfItems, decimal unitPrice, decimal tax, string expectedResult) =>
             Pricer.Calculate(
-                    CalculatePriceBuilder
-                        .APrice()
+                    APrice()
                         .For(numberOfItems)
                         .Priced(unitPrice)
                         .Taxed(tax)
