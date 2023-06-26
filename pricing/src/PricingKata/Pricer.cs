@@ -10,11 +10,11 @@ namespace PricingKata
             {1000, 0.03m}
         };
 
-        public static string Calculate(int numberOfItems, decimal unitPrice, decimal tax = 0)
+        public static string Calculate(CalculatePrice calculatePrice)
         {
-            var priceWithoutTax = PriceWithoutTax(numberOfItems, unitPrice);
+            var priceWithoutTax = PriceWithoutTax(calculatePrice.NumberOfItems, calculatePrice.UnitPrice);
             var priceWithDiscount = priceWithoutTax - DiscountAmount(priceWithoutTax);
-            var taxAmount = TaxAmount(tax, priceWithDiscount);
+            var taxAmount = TaxAmount(calculatePrice.Tax, priceWithDiscount);
 
             return TotalAmount(priceWithDiscount, taxAmount)
                 .ToEuroString();

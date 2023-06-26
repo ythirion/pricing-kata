@@ -11,7 +11,7 @@ namespace PricingKata.Tests
         [InlineData(5, 345, 0.1, "1840.58 €")]
         [InlineData(5, 1299, 0.1, "6787.28 €")]
         public void Calculate(int numberOfItems, decimal unitPrice, decimal tax, string expectedResult) =>
-            Pricer.Calculate(numberOfItems, unitPrice, tax)
+            Pricer.Calculate(new CalculatePrice(numberOfItems, unitPrice, tax))
                 .Should()
                 .Be(expectedResult);
     }
